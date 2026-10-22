@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --background: #101411;
+  --surface: #191f1a;
+  --surface-light: #222a23;
+  --accent: #b6f36b;
+  --text: #f2f5ef;
+  --muted: #89948a;
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at top, #243025 0%, transparent 55%),
+    var(--background);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+.calculator {
+  width: 100%;
+  max-width: 390px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: rgba(25, 31, 26, 0.96);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.calculator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.calculator-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.calculator-header h1 span {
+  color: var(--accent);
+}
+
+.status {
+  padding: 7px 10px;
+  border: 1px solid rgba(182, 243, 107, 0.2);
+  border-radius: 20px;
+  color: var(--accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.display {
+  display: flex;
+  min-height: 125px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-bottom: 22px;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.expression {
+  width: 100%;
+  min-height: 24px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  text-align: right;
+}
+
+.result {
+  display: block;
+  width: 100%;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(36px, 10vw, 48px);
+  font-weight: 500;
+  letter-spacing: -2px;
+  text-align: right;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.key {
+  min-width: 0;
+  height: 62px;
+  border: 1px solid transparent;
+  border-radius: 17px;
+  background: var(--surface-light);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.key:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: #2b342c;
+}
+
+.key:active {
+  transform: scale(0.94);
+}
+
+.key.utility {
+  background: #303831;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+.key.operator {
+  background: #29342a;
+  color: var(--accent);
+  font-size: 24px;
+}
+
+.key.equals {
+  grid-row: span 2;
+  height: auto;
+  min-height: 134px;
+  background: var(--accent);
+  color: #182112;
+  font-size: 28px;
+}
+
+.key.equals:hover {
+  background: #c8ff88;
+}
+
+.key.zero {
+  grid-column: span 2;
+}
+
+.calculator-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 25px;
+  padding-top: 17px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.3px;
+}
+
+.calculator-footer span:last-child {
+  text-align: right;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 360px) {
+  .calculator {
+    padding: 18px;
+  }
+
+  .keypad {
+    gap: 8px;
+  }
+
+  .key {
+    height: 55px;
+    border-radius: 14px;
+  }
+
+  .key.equals {
+    min-height: 118px;
+  }
+
+  .calculator-footer {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
